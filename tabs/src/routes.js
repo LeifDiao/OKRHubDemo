@@ -83,6 +83,8 @@ import SpaceShip from "examples/Icons/SpaceShip";
 // import CreditCard from "examples/Icons/CreditCard";
 import Dashboard1 from "OKRHub/Dashboard1";
 
+import ObjectiveList from "OKRHub/ObjectiveList";
+
 const routes = [
   {
     type: "collapse",
@@ -148,9 +150,9 @@ const routes = [
     collapse: [
       {
         name: "Objectives",
-        key: "Dashboard1",
-        route: "/OKRhub/Dashboard1",
-        component: Dashboard1,
+        key: "ObjectiveList",
+        route: "/OKRhub/ObjectiveList",
+        component: ObjectiveList,
       },
       {
         name: "Summary",

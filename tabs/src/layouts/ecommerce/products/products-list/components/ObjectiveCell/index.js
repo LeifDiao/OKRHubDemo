@@ -23,12 +23,12 @@ import Checkbox from "@mui/material/Checkbox";
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 
-function ProductCell({ image, name, checked }) {
+function ObjectiveCell({ name, checked }) {
   return (
     <SuiBox display="flex" alignItems="center">
       <Checkbox defaultChecked={checked} />
-      <SuiBox mx={2} width="3.75rem">
-        <SuiBox component="img" src={image} alt={name} width="100%" />
+      <SuiBox mx={2} width="0.50rem">
+        <SuiBox component="" src={name} alt={name} width="100%" />
       </SuiBox>
       <SuiTypography variant="button" fontWeight="medium">
         {name}
@@ -38,15 +38,14 @@ function ProductCell({ image, name, checked }) {
 }
 
 // Setting default value for the props of ProductCell
-ProductCell.defaultProps = {
+ObjectiveCell.defaultProps = {
   checked: false,
 };
 
 // Typechecking props for the ProductCell
-ProductCell.propTypes = {
-  image: PropTypes.string.isRequired,
+ObjectiveCell.propTypes = {
   name: PropTypes.string.isRequired,
   checked: PropTypes.bool,
 };
 
-export default ProductCell;
+export default ObjectiveCell;
