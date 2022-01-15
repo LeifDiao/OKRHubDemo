@@ -139,7 +139,7 @@ export default function App() {
       onClick={handleConfiguratorOpen}
     >
       <Icon className=" text-dark" fontSize="default">
-        settings
+        testing
       </Icon>
     </SuiBox>
   );
@@ -163,7 +163,7 @@ export default function App() {
           {layout === "vr" && <Configurator />}
           <Switch>
             {getRoutes(routes)}
-            <Redirect from="*" to="/dashboards/default" />
+            <Redirect from="*" to="/OKRHub/Dashboard1" />
           </Switch>
         </ThemeProvider>
       </StylesProvider>
@@ -180,7 +180,7 @@ export default function App() {
               onMouseEnter={handleOnMouseEnter}
               onMouseLeave={handleOnMouseLeave}
             />
-            <Redirect from="*" to="/dashboards/default" />
+            <Redirect from="*" to="/OKRHub/Dashboard1" />
             <Configurator />
             {configsButton}
           </>
@@ -188,7 +188,7 @@ export default function App() {
         {layout === "vr" && <Configurator />}
         <Switch>
           {getRoutes(routes)}
-          <Redirect from="*" to="/dashboards/default" />
+          <Redirect from="*" to="/OKRHub/Dashboard1" />
         </Switch>
       </ThemeProvider>
     </StyledEngineProvider>

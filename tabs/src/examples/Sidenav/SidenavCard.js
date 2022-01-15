@@ -49,19 +49,19 @@ function SidenavCard() {
           </SuiTypography>
           <SuiBox mb={1.825} mt={-1}>
             <SuiTypography variant="caption" textColor="white" fontWeight="medium">
-              Please check our docs
+              Please visit our help centre.
             </SuiTypography>
           </SuiBox>
           <SuiButton
             component={Link}
-            href="https://www.creative-tim.com/learning-lab/react/quick-start/soft-ui-dashboard"
+            href="https://www.thedigitalproject.com.au/"
             target="_blank"
             rel="noreferrer"
             size="small"
             color="default"
             fullWidth
           >
-            documentation
+            Help Centre
           </SuiButton>
         </SuiBox>
       </CardContent>
