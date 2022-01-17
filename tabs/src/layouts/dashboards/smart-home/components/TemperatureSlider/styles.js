@@ -20,10 +20,6 @@ export default makeStyles(({ palette, transitions }) => {
   const { circleSliderColors, transparent } = palette;
 
   return {
-    temperatureSlider_card: {
-      height: "99.5%",
-    },
-
     temperatureSlider: {
       height: "100%",
       textAlign: "center",

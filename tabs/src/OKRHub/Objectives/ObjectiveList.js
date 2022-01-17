@@ -1,40 +1,29 @@
-/**
-=========================================================
-* Soft UI Dashboard PRO React - v2.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-pro-material-ui
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 // react-router-dom components
 import { Link } from "react-router-dom";
-
 // @mui material components
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
-
-// Soft UI Dashboard PRO React components
-import SuiBox from "components/SuiBox";
-import SuiTypography from "components/SuiTypography";
-import SuiButton from "components/SuiButton";
-
-// Soft UI Dashboard PRO React example components
-import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-// import Footer from "examples/Footer";
-import DataTable from "examples/Tables/DataTable";
-
+// OKR ui components
+import SuiBox from "OKRHub/UI_Components/SuiBox";
+import SuiTypography from "OKRHub/UI_Components/SuiTypography";
+import SuiButton from "OKRHub/UI_Components/SuiButton";
+// OKR ui layout
+import DashboardLayout from "OKRHub/Resources/DashboardLayout";
+import DashboardNavbar from "OKRHub/Resources/DashboardNavbar";
+import DataTable from "OKRHub/Resources/DataTable";
 // Data
-import dataTableData from "layouts/ecommerce/products/products-list/data/dataTableData";
+import { useEffect, useState } from "react";
+import ListTableData, { getData } from "OKRHub/Objectives/ListTableData";
 
 function ObjectiveList() {
+  // life cycle js
+  const [data, setData] = useState(ListTableData);
+
+  useEffect(async () => {
+    const data1 = await getData();
+    setData(data1);
+  }, []);
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -50,7 +39,7 @@ function ObjectiveList() {
               </SuiTypography>
             </SuiBox>
             <Stack spacing={1} direction="row">
-              <Link to="/ecommerce/products/new-product" className="decoration-none">
+              <Link to="/OKRHub/Objectives/NewObjective" className="addnewobjective">
                 <SuiButton variant="gradient" buttonColor="info" size="small">
                   + New Objective
                 </SuiButton>
@@ -64,7 +53,7 @@ function ObjectiveList() {
             </Stack>
           </SuiBox>
           <DataTable
-            table={dataTableData}
+            table={data}
             entriesPerPage={{
               defaultValue: 7,
               entries: [5, 7, 10, 15, 20, 25],

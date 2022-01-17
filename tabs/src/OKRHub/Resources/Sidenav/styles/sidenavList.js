@@ -13,11 +13,16 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-export default {
-  labels: ["Done", "In progress", "Not Start"],
-  datasets: {
-    label: "Key Results",
-    backgroundColors: ["info", "error", "success"],
-    data: [65, 22, 13],
-  },
-};
+// @mui material components
+import { makeStyles } from "@mui/styles";
+
+export default makeStyles(({ functions }) => {
+  const { pxToRem } = functions;
+
+  return {
+    list: {
+      paddingLeft: pxToRem(16),
+      marginLeft: pxToRem(24),
+    },
+  };
+});

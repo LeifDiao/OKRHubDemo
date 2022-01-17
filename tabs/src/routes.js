@@ -18,10 +18,9 @@
   10. The `component` key is used to store the component of its route.
 */
 
-// Soft UI Dashboard PRO React layouts
-
 import Automotive from "layouts/dashboards/automotive";
 import SmartHome from "layouts/dashboards/smart-home";
+import Overview from "layouts/ecommerce/overview";
 // import ProfileOverview from "layouts/pages/profile/profile-overview";
 // import Teams from "layouts/pages/profile/teams";
 // import AllProjects from "layouts/pages/profile/all-projects";
@@ -43,7 +42,7 @@ import SmartHome from "layouts/dashboards/smart-home";
 // import Kanban from "layouts/applications/kanban";
 // import Wizard from "layouts/applications/wizard";
 // import DataTables from "layouts/applications/data-tables";
-// import Calendar from "layouts/applications/calendar";
+// import calendar from "layouts/applications/calendar/index";
 // import Analytics from "layouts/applications/analytics";
 // import Overview from "layouts/ecommerce/overview";
 // import NewProduct from "layouts/ecommerce/products/new-product";
@@ -71,8 +70,6 @@ import SmartHome from "layouts/dashboards/smart-home";
 // import Error404 from "layouts/authentication/error/404";
 // import Error500 from "layouts/authentication/error/500";
 
-// Soft UI Dashboard PRO React icons
-
 import Shop from "examples/Icons/Shop";
 import Office from "examples/Icons/Office";
 import SettingsIcon from "examples/Icons/Settings";
@@ -82,8 +79,9 @@ import SpaceShip from "examples/Icons/SpaceShip";
 // import CustomerSupport from "examples/Icons/CustomerSupport";
 // import CreditCard from "examples/Icons/CreditCard";
 import Dashboard1 from "OKRHub/Dashboard1";
-
-import ObjectiveList from "OKRHub/ObjectiveList";
+import ObjectiveList from "OKRHub/Objectives/ObjectiveList";
+import ObjectiveSummary from "OKRHub/Objectives/ObjectiveSummary";
+import NewObjective from "OKRHub/Objectives/NewObjective";
 
 const routes = [
   {
@@ -97,18 +95,6 @@ const routes = [
         key: "Dashboard1",
         route: "/OKRhub/Dashboard1",
         component: Dashboard1,
-      },
-      {
-        name: "Dashboard 2",
-        key: "automotive",
-        route: "/dashboards/automotive",
-        component: Automotive,
-      },
-      {
-        name: "Dashboard 3",
-        key: "smart-home",
-        route: "/dashboards/smart-home",
-        component: SmartHome,
       },
     ],
   },
@@ -130,14 +116,14 @@ const routes = [
       {
         name: "Summary",
         key: "automotive",
-        route: "/dashboards/automotive",
-        component: Automotive,
+        route: "/OKRhub/Dashboard1",
+        component: Dashboard1,
       },
       {
         name: "New Strategy",
         key: "smart-home",
-        route: "/dashboards/smart-home",
-        component: SmartHome,
+        route: "/OKRhub/Dashboard1",
+        component: Dashboard1,
       },
     ],
   },
@@ -151,20 +137,20 @@ const routes = [
       {
         name: "Objectives",
         key: "ObjectiveList",
-        route: "/OKRhub/ObjectiveList",
+        route: "/OKRhub/Objectives/ObjectiveList",
         component: ObjectiveList,
       },
       {
         name: "Summary",
-        key: "automotive",
-        route: "/dashboards/automotive",
-        component: Automotive,
+        key: "Summary",
+        route: "/OKRhub/Objectives/ObjectiveSummary",
+        component: ObjectiveSummary,
       },
       {
         name: "New Objective",
-        key: "smart-home",
-        route: "/dashboards/smart-home",
-        component: SmartHome,
+        key: "NewObjective",
+        route: "/OKRhub/Objectives/NewObjective",
+        component: NewObjective,
       },
     ],
   },
@@ -223,33 +209,6 @@ const routes = [
   },
 
   { type: "divider", key: "divider-1" },
-  { type: "title", title: "Profile", key: "title-profile" },
-  {
-    type: "collapse",
-    name: "My Profile",
-    key: "myprofile",
-    icon: <SpaceShip size="12px" />,
-    collapse: [
-      {
-        name: "Details",
-        key: "Dashboard1",
-        route: "/OKRhub/Dashboard1",
-        component: Dashboard1,
-      },
-      {
-        name: "Edit Details",
-        key: "automotive",
-        route: "/dashboards/automotive",
-        component: Automotive,
-      },
-      {
-        name: "Team",
-        key: "smart-home",
-        route: "/dashboards/smart-home",
-        component: SmartHome,
-      },
-    ],
-  },
 
   {
     type: "collapse",
@@ -259,15 +218,15 @@ const routes = [
     collapse: [
       {
         name: "Report1",
-        key: "Dashboard1",
-        route: "/OKRhub/Dashboard1",
-        component: Dashboard1,
+        key: "overview",
+        route: "/ecommerce/overview",
+        component: Overview,
       },
       {
         name: "Report2",
-        key: "automotive",
-        route: "/dashboards/automotive",
-        component: Automotive,
+        key: "smart-home",
+        route: "/dashboards/smart-home",
+        component: SmartHome,
       },
     ],
   },

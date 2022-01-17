@@ -1,5 +1,5 @@
 {
-    "name": "OKRHubDemo",
+    "name": "okrhubdemo",
     "version": "0.0.1",
     "description": "",
     "author": "",
@@ -11,5 +11,8 @@
     "devDependencies": {
         "@microsoft/teamsfx-cli": "0.*"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.24.0"
+    }
 }

@@ -13,11 +13,19 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-export default {
-  labels: ["Done", "In progress", "Not Start"],
-  datasets: {
-    label: "Key Results",
-    backgroundColors: ["info", "error", "success"],
-    data: [65, 22, 13],
-  },
-};
+// react-quill components
+import ReactQuill from "react-quill";
+
+// react-quill styles
+import "react-quill/dist/quill.snow.css";
+
+// Custom styles for the SuiEditor
+import styles from "components/SuiEditor/styles";
+
+function SuiEditor(props) {
+  const classes = styles();
+
+  return <ReactQuill theme="snow" {...props} className={classes.suiEditor} />;
+}
+
+export default SuiEditor;
