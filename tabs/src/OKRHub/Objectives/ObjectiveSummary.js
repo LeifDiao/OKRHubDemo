@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { useState } from "react";
 // @mui material components
 import Grid from "@mui/material/Grid";
@@ -14,13 +13,15 @@ import SuiTypography from "components/SuiTypography";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import TemperatureSlider from "layouts/dashboards/smart-home/components/TemperatureSlider";
+
 // import Footer from "examples/Footer";
 import ProgressDoughnutChart from "examples/Charts/DoughnutCharts/ProgressDoughnutChart";
 import progressDoughnutChartData from "layouts/pages/projects/general/data/progressDoughnutChartData";
 import ProgressLineChart from "examples/Charts/LineCharts/ProgressLineChart";
 import progressLineChartData from "layouts/pages/projects/general/data/progressLineChartData";
+// import { render } from "react-dom";
 
-function NewProject() {
+function NewObjective() {
   //   const [startDate, setStartDate] = useState(new Date());
   //   const [endDate, setEndDate] = useState(new Date());
   //   const [editorValue, setEditorValue] = useState(
@@ -29,6 +30,7 @@ function NewProject() {
 
   //   const handleSetStartDate = (newDate) => setStartDate(newDate);
   //   const handleSetEndDate = (newDate) => setEndDate(newDate);
+
   const [temperature, setTemperature] = useState(21);
 
   return (
@@ -41,7 +43,7 @@ function NewProject() {
               {/* Objective Header */}
               <SuiBox p={2} lineHeight={1}>
                 <SuiTypography variant="h5" fontWeight="medium">
-                  Objective 1 App Development
+                  Name
                 </SuiTypography>
                 <SuiTypography variant="button" fontWeight="regular" textColor="text">
                   The KPI of APP development Project analysed by key result data.
@@ -383,4 +385,4 @@ function NewProject() {
   );
 }
 
-export default NewProject;
+export default NewObjective;

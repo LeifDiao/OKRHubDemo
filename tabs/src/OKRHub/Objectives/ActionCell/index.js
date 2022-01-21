@@ -29,7 +29,7 @@ function ActionCell() {
         textColor="secondary"
         customClass="cursor-pointer line-height-0"
       >
-        <Tooltip title="Preview product" placement="top">
+        <Tooltip title="Preview Objective" placement="top">
           <Icon className="">visibility</Icon>
         </Tooltip>
       </SuiTypography>
@@ -39,7 +39,7 @@ function ActionCell() {
           textColor="secondary"
           customClass="cursor-pointer line-height-0"
         >
-          <Tooltip title="Edit product" placement="top">
+          <Tooltip title="Edit Objective" placement="top">
             <Icon className="">edit</Icon>
           </Tooltip>
         </SuiTypography>
@@ -49,7 +49,7 @@ function ActionCell() {
         textColor="secondary"
         customClass="cursor-pointer line-height-0"
       >
-        <Tooltip title="Delete product" placement="left">
+        <Tooltip title="Delete Objective" placement="left">
           <Icon className="">delete</Icon>
         </Tooltip>
       </SuiTypography>

@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 // OKR ui components
 import SuiBadge from "components/SuiBadge";
-
-// ObjectiveList page components
 import ObjectiveCell from "OKRHub/Objectives/ObjectiveCell";
 import ActionCell from "OKRHub/Objectives/ActionCell";
 import axios from "axios";
@@ -26,6 +24,7 @@ const inactive = (
     container
   />
 );
+
 export const getData = async () => {
   const rowdata = await axios({
     method: "get",
@@ -66,7 +65,7 @@ export const getData = async () => {
       {
         Header: "Status",
         accessor: "Status",
-        Cell: ({ value }) => (value === "active" ? active : inactive),
+        Cell: ({ value }) => (value === "Active" ? active : inactive),
       },
       { Header: "action", accessor: "action" },
     ],
@@ -76,24 +75,29 @@ export const getData = async () => {
 
   return result;
 };
+
 export default {
   columns: [
     {
-      Header: "product",
-      accessor: "product",
-      width: "40%",
+      Header: "Name",
+      accessor: "Name",
+      width: "30%",
       Cell: ({ value: [name, data] }) => (
         <ObjectiveCell image={data.image} name={name} checked={data.checked} />
       ),
+      // Cell: data => console.log(data),
     },
-    { Header: "category", accessor: "category" },
-    { Header: "price", accessor: "price" },
-    { Header: "sku", accessor: "sku" },
-    { Header: "quantity", accessor: "quantity" },
+    { Header: "Type", accessor: "Type" },
     {
-      Header: "status",
-      accessor: "status",
-      Cell: ({ value }) => (value === "active" ? active : inactive),
+      Header: "Priority",
+      accessor: "Priority",
+    },
+    { Header: "Completion", accessor: "Completion" },
+    { Header: "No.Key Results", accessor: "KeyResults" },
+    {
+      Header: "Status",
+      accessor: "Status",
+      Cell: ({ value }) => (value === "Active" ? active : inactive),
     },
     { Header: "action", accessor: "action" },
   ],

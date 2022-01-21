@@ -16,7 +16,6 @@ import { useEffect, useState } from "react";
 import ListTableData, { getData } from "OKRHub/Objectives/ListTableData";
 
 function ObjectiveList() {
-  // life cycle js
   const [data, setData] = useState(ListTableData);
 
   useEffect(async () => {
@@ -55,7 +54,7 @@ function ObjectiveList() {
           <DataTable
             table={data}
             entriesPerPage={{
-              defaultValue: 7,
+              defaultValue: 5,
               entries: [5, 7, 10, 15, 20, 25],
             }}
             canSearch
