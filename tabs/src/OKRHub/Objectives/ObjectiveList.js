@@ -13,9 +13,16 @@ import DashboardNavbar from "OKRHub/Resources/DashboardNavbar";
 import DataTable from "OKRHub/Resources/DataTable";
 // Data
 import ListTableData, { getData } from "OKRHub/Objectives/ListTableData";
+// import Swal from "sweetalert2";
+// import { deleteItem } from "OKRHub/Objectives/ObjectiveEdit";
+
+let Listupdated;
+// let setListupdated;
 
 function ObjectiveList() {
   const [data, setData] = useState(ListTableData);
+
+  // [Listupdated, setListupdated] = useState(false);
 
   useEffect(async () => {
     const data1 = await getData();
@@ -37,7 +44,7 @@ function ObjectiveList() {
               </SuiTypography>
             </SuiBox>
             <Stack spacing={1} direction="row">
-              <Link to="/OKRHub/Objectives/TestNew" className="addnewobjective">
+              <Link to="/OKRHub/Objectives/NewObjective" className="addnewobjective">
                 <SuiButton variant="gradient" buttonColor="info" size="small">
                   + New Objective
                 </SuiButton>
@@ -50,17 +57,21 @@ function ObjectiveList() {
               </SuiButton> */}
             </Stack>
           </SuiBox>
-          <DataTable
-            table={data}
-            entriesPerPage={{
-              defaultValue: 10,
-              entries: [5, 10, 15],
-            }}
-          />
+          {!Listupdated && (
+            <DataTable
+              table={data}
+              entriesPerPage={{
+                defaultValue: 10,
+                entries: [5, 10, 15],
+              }}
+            />
+          )}
         </Card>
       </SuiBox>
     </DashboardLayout>
   );
 }
-
+// export function needUpdate() {
+//   setListupdated(true);
+// }
 export default ObjectiveList;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+// import axios from "axios";
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Stepper from "@mui/material/Stepper";
@@ -40,7 +40,7 @@ function getStepContent(stepIndex) {
   }
 }
 
-function NewProduct() {
+function NewObjective() {
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
   const isLastStep = activeStep === steps.length - 1;
@@ -93,4 +93,4 @@ function NewProduct() {
   );
 }
 
-export default NewProduct;
+export default NewObjective;

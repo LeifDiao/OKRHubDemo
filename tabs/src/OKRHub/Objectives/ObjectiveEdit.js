@@ -82,16 +82,26 @@ function putItem(objectId, data) {
   // });
 }
 
+// Delete API Data
+export function deleteItem(objectId) {
+  axios
+    .delete(`https://api.leoyun.xyz/api/objectives/${objectId}`, {
+      objectId,
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  console.log("deleteItem", objectId);
+}
+
 function NewObjective() {
   const location = useLocation();
   const [itemData, setitemData] = useState();
   const ObjectiveID = location.state.ObjectiveID.someIDindex;
-  // const [StartDate, setStartDate] = useState(new Date());
-  // const handleSetStartDate = (newDate) => setStartDate(newDate);
-  // const handleSetEndDate = (newDate) => setEndDate(newDate);
-  // const [itemData.Description, setEditorValue] = useState(
-  //   "<p>Some initial <strong>bold</strong> text</p><br><br><br>"
-  // );
+
   useEffect(async () => {
     const data1 = await getItems(ObjectiveID);
     setitemData(data1);
@@ -104,15 +114,10 @@ function NewObjective() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <SuiBox mt={3} mb={4}>
+      <SuiBox mt={3} md={5}>
         <Grid container spacing={3} justifyContent="center">
           <Grid item xs={12} lg={12}>
-            <Card
-              onChange={() => {
-                setchanged(true);
-              }}
-              className="overflow-visible"
-            >
+            <Card className="overflow-visible">
               {/* Objective Header */}
               <SuiBox p={3} lineHeight={1}>
                 <SuiBox display="flex" justifyContent="space-between" alignItems="flex-start">
@@ -178,6 +183,8 @@ function NewObjective() {
                               defaultValue={itemData.Name}
                               onChange={(e) => {
                                 itemData.Name = e.target.value;
+                                setchanged(true);
+                                console.log(itemData);
                               }}
                             />
                           </SuiBox>
@@ -588,7 +595,7 @@ function NewObjective() {
                       </Grid>
                     </Grid>
                     {/* !!! column 3 */}
-                    <Grid container spacing={3}>
+                    <Grid container spacing={3} marginBottom={3}>
                       {/* item-left */}
                       <Grid item xs={6}>
                         <SuiBox
@@ -597,7 +604,7 @@ function NewObjective() {
                           justifyContent="flex-end"
                           height="100%"
                         >
-                          <SuiBox ml={0.5} mt={0} lineHeight={2} display="inline-block">
+                          <SuiBox ml={0.5} mt={0} pd={2} lineHeight={2} display="inline-block">
                             <SuiTypography component="label" variant="caption" fontWeight="bold">
                               Relationship Maintenance
                             </SuiTypography>
