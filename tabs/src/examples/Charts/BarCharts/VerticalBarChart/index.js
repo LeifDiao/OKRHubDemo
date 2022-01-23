@@ -42,7 +42,7 @@ function VerticalBarChart({ title, description, height, chart }) {
     borderRadius: 4,
     backgroundColor: colors[dataset.color].main,
     fill: false,
-    maxBarThickness: 35,
+    maxBarThickness: 45,
   }));
 
   const { data, options } = configs(chart.labels, chartDatasets);
@@ -81,7 +81,7 @@ function VerticalBarChart({ title, description, height, chart }) {
 VerticalBarChart.defaultProps = {
   title: "",
   description: "",
-  height: "19.125rem",
+  height: "15.125rem",
 };
 
 // Typechecking props for the VerticalBarChart

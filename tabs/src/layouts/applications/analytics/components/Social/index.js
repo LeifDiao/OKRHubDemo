@@ -15,20 +15,20 @@ Coded by www.creative-tim.com
 
 // @mui material components
 import Card from "@mui/material/Card";
-import Tooltip from "@mui/material/Tooltip";
-import Icon from "@mui/material/Icon";
+// import Tooltip from "@mui/material/Tooltip";
+// import Icon from "@mui/material/Icon";
 
 // @mui icons
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import RedditIcon from "@mui/icons-material/Reddit";
+// import FacebookIcon from "@mui/icons-material/Facebook";
+// import TwitterIcon from "@mui/icons-material/Twitter";
+// import InstagramIcon from "@mui/icons-material/Instagram";
+// import YouTubeIcon from "@mui/icons-material/YouTube";
+// import RedditIcon from "@mui/icons-material/Reddit";
 
 // Soft UI Dashboard PRO React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
-import SuiButton from "components/SuiButton";
+// import SuiButton from "components/SuiButton";
 
 // Analytics application components
 import SocialItem from "layouts/applications/analytics/components/SocialItem";
@@ -37,38 +37,13 @@ function Social() {
   return (
     <Card className="h-100">
       <SuiBox display="flex" justifyContent="space-between" alignItems="center" pt={2} px={2}>
-        <SuiTypography variant="h6">Social</SuiTypography>
-        <Tooltip title="See how much traffic do you get from social media" placement="bottom">
-          <SuiButton variant="outlined" buttonColor="secondary" size="small" circular iconOnly>
-            <Icon className="">priority_high</Icon>
-          </SuiButton>
-        </Tooltip>
+        <SuiTypography variant="h6">Objective Progress</SuiTypography>
       </SuiBox>
       <SuiBox p={2}>
         <SocialItem
-          icon={{ color: "facebook", component: <FacebookIcon /> }}
-          title="Facebook"
-          percentage={80}
-        />
-        <SocialItem
-          icon={{ color: "twitter", component: <TwitterIcon /> }}
-          title="Facebook"
-          percentage={40}
-        />
-        <SocialItem
-          icon={{ color: "reddit", component: <RedditIcon /> }}
-          title="Reddit"
-          percentage={30}
-        />
-        <SocialItem
-          icon={{ color: "youtube", component: <YouTubeIcon /> }}
-          title="Youtube"
-          percentage={25}
-        />
-        <SocialItem
-          icon={{ color: "instagram", component: <InstagramIcon /> }}
-          title="Instagram"
-          percentage={15}
+          icon={{ color: "facebook", component: "" }}
+          title="Objective Completion"
+          percentage={45}
         />
       </SuiBox>
     </Card>

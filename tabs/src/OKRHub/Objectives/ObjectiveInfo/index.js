@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Name } from "OKRHub/Objectives/NewObjective";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
@@ -23,7 +24,7 @@ function ObjectiveInfo() {
       <SuiBox mt={3}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
-            <FormField type="text" label="Name" placeholder="eg. New Objective Name" />
+            <FormField type="text" label="Name" placeholder="eg. New Objective Name" value={Name} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <SuiBox mb={3}>

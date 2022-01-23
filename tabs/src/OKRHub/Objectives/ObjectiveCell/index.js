@@ -17,17 +17,16 @@ Coded by www.creative-tim.com
 import PropTypes from "prop-types";
 
 // @mui material components
-import Checkbox from "@mui/material/Checkbox";
+// import Checkbox from "@mui/material/Checkbox";
 
 // Soft UI Dashboard PRO React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 
-function ObjectiveCell({ name, checked }) {
+function ObjectiveCell({ name }) {
   return (
-    <SuiBox display="flex" alignItems="center">
-      <Checkbox defaultChecked={checked} />
-      <SuiBox mx={2} width="0.50rem">
+    <SuiBox display="flex" alignItems="left">
+      <SuiBox mx={0} width="0.50rem">
         <SuiBox component="" src={name} alt={name} width="100%" />
       </SuiBox>
       <SuiTypography variant="button" fontWeight="medium">
@@ -38,14 +37,14 @@ function ObjectiveCell({ name, checked }) {
 }
 
 // Setting default value for the props of ProductCell
-ObjectiveCell.defaultProps = {
-  checked: false,
-};
+// ObjectiveCell.defaultProps = {
+//   checked: false,
+// };
 
 // Typechecking props for the ProductCell
 ObjectiveCell.propTypes = {
   name: PropTypes.string.isRequired,
-  checked: PropTypes.bool,
+  // checked: PropTypes.bool,
 };
 
 export default ObjectiveCell;

@@ -14,12 +14,12 @@ Coded by www.creative-tim.com
 */
 
 export default {
-  labels: ["16-20", "21-25", "26-30", "31-36", "36-42", "42+"],
+  labels: ["Strategic", "Business", "Workforce", "Employee", "Relationship"],
   datasets: [
     {
-      label: "Sales by age",
+      label: "Assessment Score",
       color: "dark",
-      data: [15, 20, 12, 60, 20, 15],
+      data: [3, 2, 1, 5, 3],
     },
   ],
 };

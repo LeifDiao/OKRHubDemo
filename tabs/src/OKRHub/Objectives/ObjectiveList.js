@@ -1,5 +1,5 @@
-// react-router-dom components
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 // @mui material components
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
@@ -12,7 +12,6 @@ import DashboardLayout from "OKRHub/Resources/DashboardLayout";
 import DashboardNavbar from "OKRHub/Resources/DashboardNavbar";
 import DataTable from "OKRHub/Resources/DataTable";
 // Data
-import { useEffect, useState } from "react";
 import ListTableData, { getData } from "OKRHub/Objectives/ListTableData";
 
 function ObjectiveList() {
@@ -38,7 +37,7 @@ function ObjectiveList() {
               </SuiTypography>
             </SuiBox>
             <Stack spacing={1} direction="row">
-              <Link to="/OKRHub/Objectives/NewObjective" className="addnewobjective">
+              <Link to="/OKRHub/Objectives/TestNew" className="addnewobjective">
                 <SuiButton variant="gradient" buttonColor="info" size="small">
                   + New Objective
                 </SuiButton>
@@ -54,10 +53,9 @@ function ObjectiveList() {
           <DataTable
             table={data}
             entriesPerPage={{
-              defaultValue: 5,
-              entries: [5, 7, 10, 15, 20, 25],
+              defaultValue: 10,
+              entries: [5, 10, 15],
             }}
-            canSearch
           />
         </Card>
       </SuiBox>

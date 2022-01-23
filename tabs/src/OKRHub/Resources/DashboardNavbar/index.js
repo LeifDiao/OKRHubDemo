@@ -31,7 +31,7 @@ import Icon from "@mui/material/Icon";
 // Soft UI Dashboard PRO React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
-import SuiInput from "components/SuiInput";
+// import SuiInput from "components/SuiInput";
 
 // Soft UI Dashboard PRO React example components
 import Breadcrumbs from "examples/Breadcrumbs";
@@ -136,7 +136,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
       className={classes.navbar}
     >
       <Toolbar className={classes.navbar_container}>
-        <SuiBox customClass={classes.navbar_row} color="inherit" mb={{ xs: 1, md: 0 }}>
+        <SuiBox customClass={classes.navbar_row} color="inherit" mb={{ xs: 1, md: 0.5 }}>
           <Breadcrumbs icon="home" title={route[route.length - 1]} route={route} light={light} />
           <Icon
             className={classes.navbar_desktop_menu}
@@ -148,13 +148,13 @@ function DashboardNavbar({ absolute, light, isMini }) {
         </SuiBox>
         {isMini ? null : (
           <SuiBox customClass={classes.navbar_row}>
-            <SuiBox pr={1}>
+            {/* <SuiBox pr={1}>
               <SuiInput
                 placeholder="Type here..."
                 withIcon={{ icon: "search", direction: "left" }}
                 customClass={classes.navbar_input}
               />
-            </SuiBox>
+            </SuiBox> */}
             <SuiBox
               color={light ? "white" : "inherit"}
               customClass={classes.navbar_section_desktop}

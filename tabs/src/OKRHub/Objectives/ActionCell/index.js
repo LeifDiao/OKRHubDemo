@@ -16,12 +16,14 @@ Coded by www.creative-tim.com
 // @mui material components
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
+import { Link } from "react-router-dom";
+// import Button from "@mui/material/Button";
 
 // Soft UI Dashboard PRO React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 
-function ActionCell() {
+function ActionCell(someIDindex) {
   return (
     <SuiBox display="flex" alignItems="center">
       <SuiTypography
@@ -30,7 +32,15 @@ function ActionCell() {
         customClass="cursor-pointer line-height-0"
       >
         <Tooltip title="Preview Objective" placement="top">
-          <Icon className="">visibility</Icon>
+          <Link
+            to={{
+              pathname: "/OKRHub/Objectives/ObjectiveSummary",
+              state: { ObjectiveID: someIDindex },
+            }}
+            className="previewobjective"
+          >
+            <Icon className="">visibility</Icon>
+          </Link>
         </Tooltip>
       </SuiTypography>
       <SuiBox mx={2}>
@@ -40,7 +50,15 @@ function ActionCell() {
           customClass="cursor-pointer line-height-0"
         >
           <Tooltip title="Edit Objective" placement="top">
-            <Icon className="">edit</Icon>
+            <Link
+              to={{
+                pathname: "/OKRHub/Objectives/ObjectiveEdit",
+                state: { ObjectiveID: someIDindex },
+              }}
+              className="editobjective"
+            >
+              <Icon className="">edit</Icon>
+            </Link>
           </Tooltip>
         </SuiTypography>
       </SuiBox>

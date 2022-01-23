@@ -154,10 +154,10 @@ function Sidenav({ routes, ...rest }) {
 
       if (type === "collapse") {
         returnValue = route ? (
-          <Link
-            href={route}
+          <NavLink
+            to={route}
             key={key}
-            target="_blank"
+            // target="_blank"
             rel="noreferrer"
             className={classes.sidenav_navlink}
           >
@@ -167,7 +167,7 @@ function Sidenav({ routes, ...rest }) {
               active={key === collapseName}
               noCollapse={noCollapse}
             />
-          </Link>
+          </NavLink>
         ) : (
           <SidenavCollapse
             key={key}

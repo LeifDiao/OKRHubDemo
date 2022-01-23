@@ -1,38 +1,73 @@
-import { useState } from "react";
-// @mui material components
+import { React, useState, useEffect } from "react";
+import axios from "axios";
+import { useLocation, Link } from "react-router-dom";
+import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import Switch from "@mui/material/Switch";
 
 // Soft UI Dashboard PRO React components
-import SuiBox from "components/SuiBox";
-import SuiTypography from "components/SuiTypography";
+import SuiBox from "OKRHub/UI_Components/SuiBox";
+import SuiTypography from "OKRHub/UI_Components/SuiTypography";
+import SuiButton from "OKRHub/UI_Components/SuiButton";
 
 // Soft UI Dashboard PRO React example components
-import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import TemperatureSlider from "layouts/dashboards/smart-home/components/TemperatureSlider";
+import DashboardLayout from "OKRHub/Resources/DashboardLayout";
+import DashboardNavbar from "OKRHub/Resources/DashboardNavbar";
+import VerticalBarChart from "examples/Charts/BarCharts/VerticalBarChart";
+import verticalBarChartData from "layouts/pages/charts/data/verticalBarChartData";
+import Social from "layouts/applications/analytics/components/Social";
+import ChannelsChart from "layouts/ecommerce/overview/components/ChannelsChart";
 
-// import Footer from "examples/Footer";
-import ProgressDoughnutChart from "examples/Charts/DoughnutCharts/ProgressDoughnutChart";
-import progressDoughnutChartData from "layouts/pages/projects/general/data/progressDoughnutChartData";
-import ProgressLineChart from "examples/Charts/LineCharts/ProgressLineChart";
-import progressLineChartData from "layouts/pages/projects/general/data/progressLineChartData";
-// import { render } from "react-dom";
+// get data from API & Map
+export const getItems = async (objectId) => {
+  const objective = await axios({
+    method: "get",
+    url: `https://api.leoyun.xyz/api/objectives/${objectId}`,
+  });
+
+  const {
+    Name,
+    Brief,
+    Type,
+    Priority,
+    Completion,
+    NoKeyResults: KeyResults,
+    Status,
+    StartDate,
+    EndDate,
+    Description,
+    ObjectiveStatus,
+  } = objective.data.data.attributes;
+
+  return {
+    Name,
+    Brief,
+    Type,
+    Priority,
+    Completion,
+    NoKeyResults: KeyResults,
+    Status,
+    StartDate,
+    EndDate,
+    Description,
+    ObjectiveStatus,
+  };
+};
 
 function NewObjective() {
-  //   const [startDate, setStartDate] = useState(new Date());
-  //   const [endDate, setEndDate] = useState(new Date());
-  //   const [editorValue, setEditorValue] = useState(
-  //     "<p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><br><br>"
-  //   );
+  const location = useLocation();
+  const [itemData, setitemData] = useState();
 
-  //   const handleSetStartDate = (newDate) => setStartDate(newDate);
-  //   const handleSetEndDate = (newDate) => setEndDate(newDate);
+  useEffect(async () => {
+    const data1 = await getItems(location.state.ObjectiveID.someIDindex);
+    setitemData(data1);
+  }, []);
 
-  const [temperature, setTemperature] = useState(21);
+  if (!itemData) return false;
 
+  // Form Content for objective summary
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -41,17 +76,27 @@ function NewObjective() {
           <Grid item xs={12} lg={12}>
             <Card className="overflow-visible">
               {/* Objective Header */}
-              <SuiBox p={2} lineHeight={1}>
-                <SuiTypography variant="h5" fontWeight="medium">
-                  Name
-                </SuiTypography>
-                <SuiTypography variant="button" fontWeight="regular" textColor="text">
-                  The KPI of APP development Project analysed by key result data.
-                </SuiTypography>
-
+              <SuiBox p={3} lineHeight={1}>
+                <SuiBox display="flex" justifyContent="space-between" alignItems="flex-start">
+                  <SuiBox lineHeight={1}>
+                    <SuiTypography variant="h5" fontWeight="medium">
+                      {itemData.Name}
+                    </SuiTypography>
+                    <SuiTypography variant="button" fontWeight="regular" textColor="text">
+                      {itemData.Brief}
+                    </SuiTypography>
+                  </SuiBox>
+                  <Stack spacing={1} pr={4} mt={1} direction="row">
+                    <Link to="/OKRHub/ObjectiveList" className="backtolist">
+                      <SuiButton variant="gradient" buttonColor="info" size="small">
+                        Back to List
+                      </SuiButton>
+                    </Link>
+                  </Stack>
+                </SuiBox>
                 <Divider />
                 <Grid container sapcing={3}>
-                  {/* part A */}
+                  {/* part A Data Form */}
                   <Grid item xs={7}>
                     <SuiTypography variant="h6">Summary</SuiTypography>
                     {/* !!! column 1 */}
@@ -77,7 +122,7 @@ function NewObjective() {
                             variant="body2"
                             fontWeight="regular"
                           >
-                            App Development in New Project
+                            {itemData.Name}
                           </SuiTypography>
                         </SuiBox>
                       </Grid>
@@ -102,7 +147,7 @@ function NewObjective() {
                             variant="body2"
                             fontWeight="regular"
                           >
-                            Value Stream
+                            {itemData.Type}
                           </SuiTypography>
                         </SuiBox>
                       </Grid>
@@ -131,7 +176,7 @@ function NewObjective() {
                             variant="body2"
                             fontWeight="regular"
                           >
-                            Digital Transformation
+                            Need to Update
                           </SuiTypography>
                         </SuiBox>
                       </Grid>
@@ -156,7 +201,7 @@ function NewObjective() {
                             variant="body2"
                             fontWeight="regular"
                           >
-                            In Progress
+                            {itemData.ObjectiveStatus.replace(/_/g, " ")}
                           </SuiTypography>
                         </SuiBox>
                       </Grid>
@@ -185,7 +230,7 @@ function NewObjective() {
                             variant="body2"
                             fontWeight="regular"
                           >
-                            Medium
+                            {itemData.Priority}
                           </SuiTypography>
                         </SuiBox>
                       </Grid>
@@ -210,7 +255,7 @@ function NewObjective() {
                             variant="body2"
                             fontWeight="regular"
                           >
-                            Active
+                            {itemData.Status}
                           </SuiTypography>
                         </SuiBox>
                       </Grid>
@@ -239,7 +284,7 @@ function NewObjective() {
                             variant="body2"
                             fontWeight="regular"
                           >
-                            7-Jan-2022
+                            {itemData.StartDate}
                           </SuiTypography>
                         </SuiBox>
                       </Grid>
@@ -264,7 +309,7 @@ function NewObjective() {
                             variant="body2"
                             fontWeight="regular"
                           >
-                            20-July-2022
+                            {itemData.EndDate}
                           </SuiTypography>
                         </SuiBox>
                       </Grid>
@@ -293,18 +338,13 @@ function NewObjective() {
                             variant="h6"
                             fontWeight="regular"
                           >
-                            Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry &apos;s standard dummy text
-                            ever since the 1500s, when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining
-                            essentially unchanged.
+                            {itemData.Description}
                           </SuiTypography>
                         </SuiBox>
                       </Grid>
                     </Grid>
 
-                    {/* !!! column 5 Description */}
+                    {/* !!! column 6 Block */}
                     <SuiBox mt={3} mb={2}>
                       <Grid container spacing={3}>
                         <Grid item xs={12} md={6}>
@@ -330,49 +370,16 @@ function NewObjective() {
                       </Grid>
                     </SuiBox>
                   </Grid>
-                  {/* Part B */}
+                  {/* Part B Charts */}
                   <Grid item xs={5}>
-                    {/* <SuiTypography ml={2} variant="h6">
-                      Analytic Chart
-                    </SuiTypography> */}
                     <Grid item xs={12} sm={6} lg={12}>
-                      <TemperatureSlider
-                        handle1={{
-                          value: temperature,
-                          onChange: (v) => setTemperature(Math.round(v)),
-                        }}
-                        title="Objective Progress"
-                        current={
-                          <>
-                            {temperature}
-                            <SuiTypography component="span" variant="h4" textColor="text">
-                              %
-                            </SuiTypography>
-                          </>
-                        }
-                        label="Completion"
-                        start={<>0%</>}
-                        end={<>100%</>}
-                        minValue={0}
-                        maxValue={100}
-                      />
+                      <Social />
                     </Grid>
                     <Grid item xs={12} mt={2}>
-                      <ProgressDoughnutChart
-                        icon="workspace_premium"
-                        title="Number of Key Results"
-                        count={5}
-                        chart={progressDoughnutChartData}
-                      />
+                      <ChannelsChart />
                     </Grid>
-                    <Grid item xs={12} my={2}>
-                      <ProgressLineChart
-                        icon="date_range"
-                        title="Key Result Scores by Month"
-                        count={55.5}
-                        progress={21}
-                        chart={progressLineChartData}
-                      />
+                    <Grid item xs={12} mt={2}>
+                      <VerticalBarChart title="Objective Assessment" chart={verticalBarChartData} />
                     </Grid>
                   </Grid>
                 </Grid>

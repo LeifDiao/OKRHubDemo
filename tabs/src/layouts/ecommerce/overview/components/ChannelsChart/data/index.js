@@ -14,10 +14,10 @@ Coded by www.creative-tim.com
 */
 
 export default {
-  labels: ["Facebook", "Direct", "Organic", "Referral"],
+  labels: ["Done", "In Progress", "Not Started"],
   datasets: {
-    label: "Projects",
-    backgroundColors: ["info", "primary", "dark", "secondary", "primary"],
-    data: [15, 20, 12, 60],
+    label: "Key Results",
+    backgroundColors: ["success", "info", "error"],
+    data: [22, 42, 10],
   },
 };

@@ -33,6 +33,7 @@ export const getData = async () => {
 
   const rows = rowdata.data.data.map((item) => {
     const { Name, Type, Priority, Completion, NoKeyResults: KeyResults, Status } = item.attributes;
+
     return {
       Name: [Name, { checked: false }],
       Type,
@@ -40,7 +41,7 @@ export const getData = async () => {
       Completion,
       KeyResults,
       Status,
-      action: <ActionCell />,
+      action: <ActionCell someIDindex={item.id} />,
     };
   });
 

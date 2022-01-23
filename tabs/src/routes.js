@@ -81,7 +81,9 @@ import SpaceShip from "examples/Icons/SpaceShip";
 import Dashboard1 from "OKRHub/Dashboard1";
 import ObjectiveList from "OKRHub/Objectives/ObjectiveList";
 import ObjectiveSummary from "OKRHub/Objectives/ObjectiveSummary";
-import NewObjective from "OKRHub/Objectives/NewObjective";
+// import NewObjective from "OKRHub/Objectives/NewObjective";
+import ObjectiveEdit from "OKRHub/Objectives/ObjectiveEdit";
+import TestNew from "OKRHub/Objectives/TestNew";
 
 const routes = [
   {
@@ -130,29 +132,12 @@ const routes = [
 
   {
     type: "collapse",
-    name: "Objectives",
-    key: "Objectives",
+    name: "ObjectiveList",
+    key: "ObjectiveList",
     icon: <SettingsIcon size="12px" />,
-    collapse: [
-      {
-        name: "Objectives",
-        key: "ObjectiveList",
-        route: "/OKRhub/Objectives/ObjectiveList",
-        component: ObjectiveList,
-      },
-      {
-        name: "Summary",
-        key: "Summary",
-        route: "/OKRhub/Objectives/ObjectiveSummary",
-        component: ObjectiveSummary,
-      },
-      {
-        name: "New Objective",
-        key: "NewObjective",
-        route: "/OKRhub/Objectives/NewObjective",
-        component: NewObjective,
-      },
-    ],
+    route: "/OKRHub/ObjectiveList",
+    component: ObjectiveList,
+    noCollapse: true,
   },
 
   {
@@ -209,7 +194,7 @@ const routes = [
   },
 
   { type: "divider", key: "divider-1" },
-
+  { type: "title", title: "Reports", key: "title-reports" },
   {
     type: "collapse",
     name: "Analytics",
@@ -227,6 +212,32 @@ const routes = [
         key: "smart-home",
         route: "/dashboards/smart-home",
         component: SmartHome,
+      },
+    ],
+  },
+  {
+    type: "",
+    name: "Others",
+    key: "others",
+    icon: <SettingsIcon size="12px" />,
+    collapse: [
+      {
+        name: "Summary",
+        key: "Summary",
+        route: "/OKRhub/Objectives/ObjectiveSummary",
+        component: ObjectiveSummary,
+      },
+      {
+        name: "New Objective",
+        key: "TestNew",
+        route: "/OKRhub/Objectives/TestNew",
+        component: TestNew,
+      },
+      {
+        name: "ObjectiveEdit",
+        key: "ObjectiveEdit",
+        route: "/OKRhub/Objectives/ObjectiveEdit",
+        component: ObjectiveEdit,
       },
     ],
   },
