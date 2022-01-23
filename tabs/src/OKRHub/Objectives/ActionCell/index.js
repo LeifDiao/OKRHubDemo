@@ -25,7 +25,6 @@ const showAlert = (itemsID) =>
     if (result.isConfirmed) {
       Swal.fire("Deleted!", "Your objective has been deleted.", "success");
       deleteItem(itemsID.someIDindex);
-      // needUpdate();
     }
   });
 

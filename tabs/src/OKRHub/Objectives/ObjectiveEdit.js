@@ -97,6 +97,18 @@ export function deleteItem(objectId) {
   console.log("deleteItem", objectId);
 }
 
+// Create New API Data
+export function newItem() {
+  axios
+    .post(`https://api.leoyun.xyz/api/objectives/`)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 function NewObjective() {
   const location = useLocation();
   const [itemData, setitemData] = useState();
