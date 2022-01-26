@@ -7,18 +7,16 @@ import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import Switch from "@mui/material/Switch";
 
-// Soft UI Dashboard PRO React components
 import SuiBox from "OKRHub/UI_Components/SuiBox";
 import SuiTypography from "OKRHub/UI_Components/SuiTypography";
 import SuiButton from "OKRHub/UI_Components/SuiButton";
 
-// Soft UI Dashboard PRO React example components
 import DashboardLayout from "OKRHub/Resources/DashboardLayout";
 import DashboardNavbar from "OKRHub/Resources/DashboardNavbar";
-import VerticalBarChart from "examples/Charts/BarCharts/VerticalBarChart";
-import verticalBarChartData from "layouts/pages/charts/data/verticalBarChartData";
-import Social from "layouts/applications/analytics/components/Social";
-import ChannelsChart from "layouts/ecommerce/overview/components/ChannelsChart";
+import VerticalBarChart from "OKRHub/Resources/Charts/BarCharts/VerticalBarChart";
+import verticalBarChartData from "OKRHub/Resources/ReportChart/data/verticalBarChartData";
+import Social from "OKRHub/Resources/analytics/components/Social";
+import ChannelsChart from "OKRHub/Resources/overview/components/ChannelsChart";
 
 // get data from API & Map
 export const getItems = async (objectId) => {

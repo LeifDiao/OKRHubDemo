@@ -1,10 +1,7 @@
-// prop-type is a library for typechecking of props
 import PropTypes from "prop-types";
-
-// Soft UI Dashboard PRO React components
-import SuiBox from "components/SuiBox";
-import SuiTypography from "components/SuiTypography";
-import SuiInput from "components/SuiInput";
+import SuiBox from "OKRHub/UI_Components/SuiBox";
+import SuiTypography from "OKRHub/UI_Components/SuiTypography";
+import SuiInput from "OKRHub/UI_Components/SuiInput";
 
 function FormField({ label, ...rest }) {
   return (

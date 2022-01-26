@@ -1,23 +1,16 @@
 import { React, useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useLocation, Link } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
-// import Switch from "@mui/material/Switch";
-
-// Soft UI Dashboard PRO React components
-import SuiBox from "components/SuiBox";
-import SuiTypography from "components/SuiTypography";
+import SuiBox from "OKRHub/UI_Components/SuiBox";
+import SuiTypography from "OKRHub/UI_Components/SuiTypography";
 import SuiButton from "OKRHub/UI_Components/SuiButton";
 import SuiDatePicker from "OKRHub/UI_Components/SuiDatePicker";
-// Soft UI Dashboard PRO React example components
-import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-
-// import Footer from "examples/Footer";
+import DashboardLayout from "OKRHub/Resources/DashboardLayout";
+import DashboardNavbar from "OKRHub/Resources/DashboardNavbar";
 import FormField from "OKRHub/Objectives/FormField";
 import SuiSelect from "OKRHub/UI_Components/SuiSelect";
 import SuiInput from "OKRHub/UI_Components/SuiInput";
@@ -392,7 +385,7 @@ function NewObjective() {
                               value={itemData.StartDate}
                               onChange={(e) => {
                                 itemData.StartDate = e.value;
-                                // console.log(e);
+                                console.log(e);
                                 setchanged(true);
                               }}
                             />

@@ -1,16 +1,10 @@
-// @mui material components
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
 import { Link } from "react-router-dom";
-// import { useEffect } from "react";
-// import Button from "@mui/material/Button";
 import Swal from "sweetalert2";
-// Soft UI Dashboard PRO React components
-import SuiBox from "components/SuiBox";
-import SuiTypography from "components/SuiTypography";
+import SuiBox from "OKRHub/UI_Components/SuiBox";
+import SuiTypography from "OKRHub/UI_Components/SuiTypography";
 import { deleteItem } from "OKRHub/Objectives/ObjectiveEdit";
-// import { showAlert } from "OKRHub/Objectives/ObjectiveList";
-// import { needUpdate } from "../ObjectiveList";
 
 const showAlert = (itemsID) =>
   Swal.fire({

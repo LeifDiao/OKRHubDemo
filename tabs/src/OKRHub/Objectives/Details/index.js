@@ -1,16 +1,12 @@
 import { useState } from "react";
 import Grid from "@mui/material/Grid";
-
-// Soft UI Dashboard PRO React components
 import SuiBox from "OKRHub/UI_Components/SuiBox";
 import SuiTypography from "OKRHub/UI_Components/SuiTypography";
-// import SuiEditor from "OKRHub/UI_Components/SuiEditor";
 import SuiSelect from "OKRHub/UI_Components/SuiSelect";
 import SuiDatePicker from "OKRHub/UI_Components/SuiDatePicker";
-// NewProduct page components
-// import FormField from "OKRHub/Objectives/FormField";
 
-function Details() {
+// eslint-disable-next-line react/prop-types
+const Details = ({ itemSetter }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const handleSetStartDate = (newDate) => setStartDate(newDate);
@@ -33,12 +29,16 @@ function Details() {
                 </SuiTypography>
               </SuiBox>
               <SuiSelect
-                defaultValue={{ value: "Digital Transformation", label: "Digital Transformation" }}
+                defaultValue={{ value: "", label: "Assign Strategic Theme" }}
                 options={[
                   { value: "Digital Transformation", label: "Digital Transformation" },
                   { value: "business development", label: "Business Development" },
                   { value: "strategy alignment", label: "Strategy Alignment" },
                 ]}
+                // onChange={(e) => {
+                //   itemSetter("StrategicAlignment", e.value);
+                //   console.log(itemSetter);
+                // }}
               />
             </SuiBox>
           </Grid>
@@ -55,12 +55,15 @@ function Details() {
                 </SuiTypography>
               </SuiBox>
               <SuiSelect
-                defaultValue={{ value: "In Progress", label: "In Progress" }}
+                defaultValue={{ value: "", label: "Select Objective Status" }}
                 options={[
-                  { value: "done", label: "Done" },
-                  { value: "In Progress", label: "In Progress" },
-                  { value: "not start", label: "Not Start" },
+                  { value: "Done", label: "Done" },
+                  { value: "In_Progress", label: "In Progress" },
+                  { value: "Not_Started", label: "Not Started" },
                 ]}
+                onChange={(e) => {
+                  itemSetter("ObjectiveStatus", e.value);
+                }}
               />
             </SuiBox>
           </Grid>
@@ -77,12 +80,15 @@ function Details() {
                 </SuiTypography>
               </SuiBox>
               <SuiSelect
-                defaultValue={{ value: "high", label: "High" }}
+                defaultValue={{ value: "", label: "Select Priority" }}
                 options={[
-                  { value: "high", label: "High" },
-                  { value: "medium", label: "Medium" },
-                  { value: "low", label: "Low" },
+                  { value: "High", label: "High" },
+                  { value: "Medium", label: "Medium" },
+                  { value: "Low", label: "Low" },
                 ]}
+                onChange={(e) => {
+                  itemSetter("Priority", e.value);
+                }}
               />
             </SuiBox>
           </Grid>
@@ -95,15 +101,18 @@ function Details() {
                   fontWeight="bold"
                   textTransform="capitalize"
                 >
-                  Block
+                  Status
                 </SuiTypography>
               </SuiBox>
               <SuiSelect
-                defaultValue={{ value: "yes", label: "Yes" }}
+                defaultValue={{ value: "Active", label: "Active" }}
                 options={[
-                  { value: "yes", label: "Yes" },
-                  { value: "no", label: "No" },
+                  { value: "Active", label: "Active" },
+                  { value: "Inactive", label: "Inactive" },
                 ]}
+                onChange={(e) => {
+                  itemSetter("Status", e.value);
+                }}
               />
             </SuiBox>
           </Grid>
@@ -119,7 +128,15 @@ function Details() {
                   Start Date
                 </SuiTypography>
               </SuiBox>
-              <SuiDatePicker value={startDate} onChange={handleSetStartDate} />
+              <SuiDatePicker
+                format="YYYY-MM-DD"
+                value={startDate}
+                onChange={(e) => {
+                  handleSetStartDate(e);
+                  itemSetter("StartDate", startDate);
+                  console.log(startDate);
+                }}
+              />
             </SuiBox>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -134,13 +151,21 @@ function Details() {
                   End Date
                 </SuiTypography>
               </SuiBox>
-              <SuiDatePicker value={endDate} onChange={handleSetEndDate} />
+              <SuiDatePicker
+                Value={endDate}
+                // onChange={handleSetEndDate}
+                onChange={(e) => {
+                  handleSetEndDate(e);
+                  itemSetter("EndDate", endDate);
+                  console.log(endDate);
+                }}
+              />
             </SuiBox>
           </Grid>
         </Grid>
       </SuiBox>
     </SuiBox>
   );
-}
+};
 
 export default Details;

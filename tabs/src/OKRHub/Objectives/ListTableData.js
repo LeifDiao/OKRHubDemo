@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// OKR ui components
 import SuiBadge from "components/SuiBadge";
 import ObjectiveCell from "OKRHub/Objectives/ObjectiveCell";
 import ActionCell from "OKRHub/Objectives/ActionCell";

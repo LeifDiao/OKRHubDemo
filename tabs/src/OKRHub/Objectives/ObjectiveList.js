@@ -13,8 +13,6 @@ import DashboardNavbar from "OKRHub/Resources/DashboardNavbar";
 import DataTable from "OKRHub/Resources/DataTable";
 // Data
 import ListTableData, { getData } from "OKRHub/Objectives/ListTableData";
-// import Swal from "sweetalert2";
-// import { deleteItem } from "OKRHub/Objectives/ObjectiveEdit";
 
 let Listupdated;
 // let setListupdated;
@@ -44,7 +42,7 @@ function ObjectiveList() {
               </SuiTypography>
             </SuiBox>
             <Stack spacing={1} direction="row">
-              <Link to="/OKRHub/Objectives/NewObjective" className="addnewobjective">
+              <Link to="/OKRHub/Objectives/ObjectiveNew" className="addnewobjective">
                 <SuiButton variant="gradient" buttonColor="info" size="small">
                   + New Objective
                 </SuiButton>

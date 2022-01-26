@@ -81,8 +81,8 @@ import SpaceShip from "examples/Icons/SpaceShip";
 import Dashboard1 from "OKRHub/Dashboard1";
 import ObjectiveList from "OKRHub/Objectives/ObjectiveList";
 import ObjectiveSummary from "OKRHub/Objectives/ObjectiveSummary";
-import NewObjective from "OKRHub/Objectives/NewObjective";
 import ObjectiveEdit from "OKRHub/Objectives/ObjectiveEdit";
+import ObjectiveNew from "OKRHub/Objectives/ObjectiveNew";
 
 const routes = [
   {
@@ -229,8 +229,8 @@ const routes = [
       {
         name: "New Objective",
         key: "New Objective",
-        route: "/OKRhub/Objectives/NewObjective",
-        component: NewObjective,
+        route: "/OKRhub/Objectives/ObjectiveNew",
+        component: ObjectiveNew,
       },
       {
         name: "ObjectiveEdit",
