@@ -7,9 +7,8 @@ import FormField from "OKRHub/Objectives/FormField";
 
 // eslint-disable-next-line react/prop-types
 const ObjectiveInfo = ({ itemSetter }) => {
-  // const newItem = item.NewObjectiveItem;
+  // eslint-disable-next-line
   console.log(itemSetter);
-  // const [editorValue, setEditorValue] = useState();
 
   return (
     <SuiBox>
@@ -23,7 +22,6 @@ const ObjectiveInfo = ({ itemSetter }) => {
               placeholder="eg. New Objective Name"
               onChange={(e) => {
                 itemSetter("Name", e.target.value);
-                console.log(itemSetter);
               }}
             />
           </Grid>
@@ -48,7 +46,6 @@ const ObjectiveInfo = ({ itemSetter }) => {
               ]}
               onChange={(e) => {
                 itemSetter("Type", e.value);
-                console.log(itemSetter);
               }}
             />
           </Grid>
@@ -63,7 +60,6 @@ const ObjectiveInfo = ({ itemSetter }) => {
               placeholder="A short description of your objective."
               onChange={(e) => {
                 itemSetter("Brief", e.target.value);
-                console.log(itemSetter);
               }}
             />
           </Grid>

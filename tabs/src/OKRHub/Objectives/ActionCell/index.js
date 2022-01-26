@@ -1,10 +1,14 @@
 import Icon from "@mui/material/Icon";
+import { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import SuiBox from "OKRHub/UI_Components/SuiBox";
 import SuiTypography from "OKRHub/UI_Components/SuiTypography";
 import { deleteItem } from "OKRHub/Objectives/ObjectiveEdit";
+
+let redirect;
+let setRedirect;
 
 const showAlert = (itemsID) =>
   Swal.fire({
@@ -19,13 +23,16 @@ const showAlert = (itemsID) =>
     if (result.isConfirmed) {
       Swal.fire("Deleted!", "Your objective has been deleted.", "success");
       deleteItem(itemsID.someIDindex);
+      setRedirect(true);
     }
   });
 
 // function for action 3 buttons
 function ActionCell(someIDindex) {
+  [redirect, setRedirect] = useState(false);
   return (
     <SuiBox display="flex" alignItems="center">
+      {redirect ? <Redirect push to="/OKRHub/ObjectiveList" /> : null}
       <SuiTypography
         variant="body1"
         textColor="secondary"
@@ -69,12 +76,19 @@ function ActionCell(someIDindex) {
       >
         <Tooltip
           title="Delete Objective"
-          placement="left"
+          placement="top"
           onClick={() => {
             showAlert(someIDindex);
           }}
         >
-          <Icon className="">delete</Icon>
+          <Link
+            to={{
+              pathname: "/OKRHub/ObjectiveList",
+            }}
+            className="refresh"
+          >
+            <Icon className="">delete</Icon>
+          </Link>
         </Tooltip>
       </SuiTypography>
     </SuiBox>

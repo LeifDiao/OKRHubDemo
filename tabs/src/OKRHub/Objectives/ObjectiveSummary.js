@@ -37,6 +37,11 @@ export const getItems = async (objectId) => {
     EndDate,
     Description,
     ObjectiveStatus,
+    StrategicAlignment,
+    BusinessGrowth,
+    WorkforceEfficiency,
+    EmployeeEngagement,
+    RelationshipMaintenance,
   } = objective.data.data.attributes;
 
   return {
@@ -51,6 +56,11 @@ export const getItems = async (objectId) => {
     EndDate,
     Description,
     ObjectiveStatus,
+    StrategicAlignment,
+    BusinessGrowth,
+    WorkforceEfficiency,
+    EmployeeEngagement,
+    RelationshipMaintenance,
   };
 };
 
@@ -283,6 +293,7 @@ function NewObjective() {
                             fontWeight="regular"
                           >
                             {itemData.StartDate}
+                            {console.log(typeof itemData.StartDate)}
                           </SuiTypography>
                         </SuiBox>
                       </Grid>

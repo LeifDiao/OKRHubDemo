@@ -5,7 +5,7 @@ import SuiSelect from "OKRHub/UI_Components/SuiSelect";
 
 // eslint-disable-next-line react/prop-types
 const Assessment = ({ itemSetter }) => {
-  // const newItem = item.NewObjectiveItem;
+  // eslint-disable-next-line
   console.log(itemSetter);
 
   return (

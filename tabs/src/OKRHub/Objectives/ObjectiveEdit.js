@@ -82,11 +82,14 @@ export function deleteItem(objectId) {
       objectId,
     })
     .then((response) => {
+      // eslint-disable-next-line
       console.log(response);
     })
     .catch((error) => {
+      // eslint-disable-next-line
       console.log(error);
     });
+  // eslint-disable-next-line
   console.log("deleteItem", objectId);
 }
 
@@ -95,9 +98,11 @@ export function newItem() {
   axios
     .post(`https://api.leoyun.xyz/api/objectives/`)
     .then((response) => {
+      // eslint-disable-next-line
       console.log(response);
     })
     .catch((error) => {
+      // eslint-disable-next-line
       console.log(error);
     });
 }
@@ -189,7 +194,6 @@ function NewObjective() {
                               onChange={(e) => {
                                 itemData.Name = e.target.value;
                                 setchanged(true);
-                                console.log(itemData);
                               }}
                             />
                           </SuiBox>
@@ -384,9 +388,9 @@ function NewObjective() {
                             <SuiDatePicker
                               value={itemData.StartDate}
                               onChange={(e) => {
-                                itemData.StartDate = e.value;
-                                console.log(e);
+                                itemData.StartDate = e[0].toJSON();
                                 setchanged(true);
+                                console.log(e[0]);
                               }}
                             />
                           </SuiBox>
@@ -411,9 +415,9 @@ function NewObjective() {
                             <SuiDatePicker
                               value={itemData.EndDate}
                               onChange={(e) => {
-                                itemData.EndDate = e.value;
-                                // console.log(e);
+                                itemData.EndDate = e[0].toJSON();
                                 setchanged(true);
+                                console.log(e[0]);
                               }}
                             />
                           </SuiBox>

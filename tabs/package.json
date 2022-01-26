@@ -41,7 +41,7 @@
     "jss": "^10.7.1",
     "jss-rtl": "^0.3.0",
     "leaflet": "^1.7.1",
-    "prop-types": "^15.7.2",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-chartjs-2": "^3.0.4",
     "react-circular-slider-svg": "^0.1.5",

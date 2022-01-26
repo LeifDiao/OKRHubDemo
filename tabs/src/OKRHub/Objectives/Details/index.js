@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import SuiBox from "OKRHub/UI_Components/SuiBox";
 import SuiTypography from "OKRHub/UI_Components/SuiTypography";
@@ -6,11 +6,18 @@ import SuiSelect from "OKRHub/UI_Components/SuiSelect";
 import SuiDatePicker from "OKRHub/UI_Components/SuiDatePicker";
 
 // eslint-disable-next-line react/prop-types
-const Details = ({ itemSetter }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const handleSetStartDate = (newDate) => setStartDate(newDate);
-  const handleSetEndDate = (newDate) => setEndDate(newDate);
+const Details = ({ item, itemSetter }) => {
+  console.log(item);
+  // eslint-disable-next-line react/prop-types
+  const startDate = item.StartDate;
+  // eslint-disable-next-line react/prop-types
+  const endDate = item.EndDate;
+  // eslint-disable-next-line react/prop-types
+  const priority = item.Priority
+    ? // eslint-disable-next-line react/prop-types
+      { value: item.Priority, label: item.Priority }
+    : { value: "", label: "select" };
+
   return (
     <SuiBox>
       <SuiTypography variant="h5">Objective Details</SuiTypography>
@@ -80,7 +87,7 @@ const Details = ({ itemSetter }) => {
                 </SuiTypography>
               </SuiBox>
               <SuiSelect
-                defaultValue={{ value: "", label: "Select Priority" }}
+                defaultValue={priority}
                 options={[
                   { value: "High", label: "High" },
                   { value: "Medium", label: "Medium" },
@@ -129,12 +136,13 @@ const Details = ({ itemSetter }) => {
                 </SuiTypography>
               </SuiBox>
               <SuiDatePicker
-                format="YYYY-MM-DD"
+                // eslint-disable-next-line react/prop-types
                 value={startDate}
                 onChange={(e) => {
-                  handleSetStartDate(e);
-                  itemSetter("StartDate", startDate);
-                  console.log(startDate);
+                  // setStartDate(e[0].toJson());
+                  itemSetter("StartDate", e[0].toJSON());
+                  console.log(e);
+                  console.log(e[0]);
                 }}
               />
             </SuiBox>
@@ -152,12 +160,11 @@ const Details = ({ itemSetter }) => {
                 </SuiTypography>
               </SuiBox>
               <SuiDatePicker
-                Value={endDate}
+                value={endDate}
                 // onChange={handleSetEndDate}
                 onChange={(e) => {
-                  handleSetEndDate(e);
-                  itemSetter("EndDate", endDate);
-                  console.log(endDate);
+                  // setEndDate(e);
+                  itemSetter("EndDate", e[0].toJSON());
                 }}
               />
             </SuiBox>

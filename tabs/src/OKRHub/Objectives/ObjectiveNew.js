@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Stack from "@mui/material/Stack";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -15,21 +15,40 @@ import DashboardNavbar from "OKRHub/Resources/DashboardNavbar";
 import ObjectiveInfo from "OKRHub/Objectives/ObjectiveInfo";
 import Details from "OKRHub/Objectives/Details";
 import Assessment from "OKRHub/Objectives/Assessment";
+import Swal from "sweetalert2";
 // import SuiAlert from "OKRHub/UI_Components/SuiAlert";
+
+let redirect;
+let setRedirect;
+
+const saveAlert = () =>
+  Swal.fire({
+    title: "Submit Successfully",
+    text: "You have successfully created a new objective!",
+    icon: "success",
+    showCancelButton: false,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Back",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      setRedirect(true);
+    }
+  });
 
 function getSteps() {
   return ["1. Objective Info", "2. Details", "3. Assessment"];
 }
 // let NewObjectiveItem;
 
-function getStepContent(stepIndex, objectiveDataSetter) {
+function getStepContent(stepIndex, objectiveData, objectiveDataSetter) {
   switch (stepIndex) {
     case 0:
-      return <ObjectiveInfo itemSetter={objectiveDataSetter} />;
+      return <ObjectiveInfo item={objectiveData} itemSetter={objectiveDataSetter} />;
     case 1:
-      return <Details itemSetter={objectiveDataSetter} />;
+      return <Details item={objectiveData} itemSetter={objectiveDataSetter} />;
     case 2:
-      return <Assessment itemSetter={objectiveDataSetter} />;
+      return <Assessment item={objectiveData} itemSetter={objectiveDataSetter} />;
     default:
       return null;
   }
@@ -43,6 +62,7 @@ function PostItem(data) {
       data,
     })
     .then((res) => {
+      saveAlert();
       // eslint-disable-next-line
       console.log("res ", res);
     })
@@ -58,19 +78,9 @@ function UpdataData(objectiveData) {
   // eslint-disable-next-line
   console.log(objectiveData);
 }
+
 function NewObjective() {
   const [data, setobjectiveData] = useState({});
-  // const handleChange = (e) => {
-  //   console.log(e.target);
-  //   const { name, value } = e.target;
-  //   setobjectiveData((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }));
-  // };
-  // const SaveAlert() {
-  //   return <SuiAlert>This is an alert!</SuiAlert>;
-  // }
 
   function handleChange(name, value) {
     setobjectiveData((prevState) => ({
@@ -78,6 +88,8 @@ function NewObjective() {
       [name]: value,
     }));
   }
+
+  [redirect, setRedirect] = useState(false);
   // eslint-disable-next-line
   console.log(data, setobjectiveData);
   const [activeStep, setActiveStep] = useState(0);
@@ -89,6 +101,7 @@ function NewObjective() {
 
   return (
     <DashboardLayout>
+      {redirect ? <Redirect push to="/OKRHub/ObjectiveList" /> : null}
       <DashboardNavbar />
       {/* <Header /> */}
       <SuiBox display="flex" justifyContent="space-between" alignItems="end">
@@ -118,7 +131,7 @@ function NewObjective() {
             <Card className="overflow-visible">
               <SuiBox p={2}>
                 <SuiBox>
-                  {getStepContent(activeStep, handleChange)}
+                  {getStepContent(activeStep, data, handleChange)}
                   <SuiBox mt={3} width="100%" display="flex" justifyContent="space-between">
                     {activeStep === 0 ? (
                       <SuiBox />
@@ -137,7 +150,9 @@ function NewObjective() {
                       <SuiButton
                         variant="gradient"
                         buttonColor="dark"
-                        onClick={() => UpdataData(data)}
+                        onClick={() => {
+                          UpdataData(data);
+                        }}
                       >
                         Save
                       </SuiButton>
